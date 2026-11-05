@@ -43,4 +43,4 @@ assets/js/
   views/                desenho de cada parte da tela (mercado, cliente, modal, fluxo, simulador)
 ```
 
-Não há etapa de build nem dependências. Os scripts são arquivos comuns carregados em ordem pelo `index.html` (cada um usa o que foi carregado antes); o topo de cada arquivo lista o que ele usa dos outros.
+Não há etapa de build nem dependências. Ao publicar uma mudança, aumente o `?v=` dos links em `index.html` para que o navegador não use arquivos antigos do cache. Os scripts são arquivos comuns carregados em ordem pelo `index.html` (cada um usa o que foi carregado antes); o topo de cada arquivo lista o que ele usa dos outros.

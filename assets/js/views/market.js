@@ -1,14 +1,14 @@
 // Visão do mercado: painel do estabelecimento.
 
-import { COR_CATEGORIA, MERCADO, ONG } from '../data.js';
-import { brl, num, plural, prazo } from '../format.js';
-import { calcularIndicadores, precoComDesconto } from '../rules.js';
-import { S } from '../state.js';
+// usa de data.js: COR_CATEGORIA, MERCADO, ONG
+// usa de format.js: brl, num, plural, prazo
+// usa de rules.js: calcularIndicadores, precoComDesconto
+// usa de state.js: S
 
 // último valor exibido de cada indicador, para animar só o que mudou
 const valoresAnteriores = {};
 
-export function renderMercado(el) {
+function renderMercado(el) {
   const ind = calcularIndicadores(S);
   const pendentes = S.itens.filter((i) => i.status === 'pendente');
   const ofertasDoMercado = S.ofertas.filter((o) => o.doMercado);
@@ -68,7 +68,7 @@ function indicadores(ind) {
   return `<div class="kpis">${html}</div>`;
 }
 
-export function esquecerIndicadores() {
+function esquecerIndicadores() {
   for (const chave of Object.keys(valoresAnteriores)) delete valoresAnteriores[chave];
 }
 

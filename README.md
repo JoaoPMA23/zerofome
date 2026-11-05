@@ -9,13 +9,7 @@ O protótipo mostra as duas visões conectadas:
 
 ## Como usar
 
-Acesse a versão publicada no GitHub Pages ou rode localmente. O JavaScript usa módulos ES, então o `index.html` precisa ser servido por HTTP (abrir o arquivo direto com duplo clique não funciona):
-
-```bash
-python -m http.server 5173
-```
-
-Depois abra `http://localhost:5173`.
+Abra o `index.html` no navegador (duplo clique funciona) ou acesse a versão publicada no GitHub Pages.
 
 - **Lado a lado**: as duas visões juntas, ideal para apresentação.
 - **Mercado** / **Cliente**: cada visão isolada. Links diretos: `#mercado` e `#cliente`.
@@ -46,4 +40,4 @@ assets/js/
   views/                desenho de cada parte da tela (mercado, cliente, modal, fluxo)
 ```
 
-Não há etapa de build nem dependências: os arquivos são servidos como estão.
+Não há etapa de build nem dependências. Os scripts são arquivos comuns carregados em ordem pelo `index.html` (cada um usa o que foi carregado antes); o topo de cada arquivo lista o que ele usa dos outros.

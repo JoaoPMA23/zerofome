@@ -1,13 +1,13 @@
 // Ações disparadas pelos botões (atributo data-act). Cada ação altera o estado;
 // depois dela o main.js redesenha a tela. Retornar `false` evita o redesenho.
 
-import { CLIENTE, CONSERVACAO, ERP_PROXIMAS_LEITURAS, JANELAS_RETIRADA, MERCADO, ONG } from './data.js';
-import { brl, num, textoValidade } from './format.js';
-import { precoComDesconto } from './rules.js';
-import { S, criarItemDeEstoque, novoId, reiniciarEstado } from './state.js';
-import { consumirAlvoPush, esconderPush, mostrarPush, toast } from './ui.js';
-import { maximoReservavel } from './views/client.js';
-import { esquecerIndicadores } from './views/market.js';
+// usa de data.js: CLIENTE, CONSERVACAO, ERP_PROXIMAS_LEITURAS, JANELAS_RETIRADA, MERCADO, ONG
+// usa de format.js: brl, num, textoValidade
+// usa de rules.js: precoComDesconto
+// usa de state.js: S, criarItemDeEstoque, novoId, reiniciarEstado
+// usa de ui.js: consumirAlvoPush, esconderPush, mostrarPush, toast
+// usa de views/client.js: maximoReservavel
+// usa de views/market.js: esquecerIndicadores
 
 const buscar = (lista, id) => lista.find((x) => x.id === id);
 
@@ -77,7 +77,7 @@ function abrirOferta(id) {
 
 /* ---------- ações ligadas aos botões ---------- */
 
-export const acoes = {
+const acoes = {
   // topo
   mudarModo(el) {
     S.modo = el.dataset.modo;
@@ -233,13 +233,13 @@ export const acoes = {
 
 /* ---------- campos do modal (atualizados sem redesenhar) ---------- */
 
-export function atualizarCampoDoModal(campo, input) {
+function atualizarCampoDoModal(campo, input) {
   if (campo === 'pct' || campo === 'qtd') S.modal[campo] = Number(input.value);
   if (campo === 'janela') S.modal.janela = input.value;
   if (campo === 'doarSobra') S.modal.doarSobra = input.checked;
 }
 
-export function fecharCamadaDoTopo() {
+function fecharCamadaDoTopo() {
   if (S.modal) S.modal = null;
   else if (S.sheet) S.sheet = null;
   else return false;

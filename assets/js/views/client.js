@@ -1,18 +1,18 @@
 // Visão do cliente: app do consumidor.
 
-import { CATEGORIAS_APP, CATEGORIA_APP, CLIENTE, COR_CATEGORIA } from '../data.js';
-import { brl, num, plural } from '../format.js';
-import { S } from '../state.js';
+// usa de data.js: CATEGORIAS_APP, CATEGORIA_APP, CLIENTE, COR_CATEGORIA
+// usa de format.js: brl, num, plural
+// usa de state.js: S
 
 const LIMITE_POR_RESERVA = 5;
 
-export function renderCliente({ app, tabbar, sheet, sheetFundo }) {
+function renderCliente({ app, tabbar, sheet, sheetFundo }) {
   app.innerHTML = S.abaCliente === 'ofertas' ? telaOfertas() : telaReservas();
   tabbar.innerHTML = barraDeAbas();
   renderSheet(sheet, sheetFundo);
 }
 
-export const maximoReservavel = (oferta) => Math.min(oferta.disp, LIMITE_POR_RESERVA);
+const maximoReservavel = (oferta) => Math.min(oferta.disp, LIMITE_POR_RESERVA);
 
 /* ---------- Ofertas ---------- */
 

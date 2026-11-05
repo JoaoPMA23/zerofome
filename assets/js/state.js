@@ -1,16 +1,16 @@
 // Estado único da demonstração. As views só leem; quem altera são as ações (actions.js).
 
-import { CONSERVACAO, ERP_LEITURA_INICIAL, OFERTAS_VIZINHOS } from './data.js';
-import { percentualDesconto, sugerirDestino } from './rules.js';
+// usa de data.js: CONSERVACAO, ERP_LEITURA_INICIAL, OFERTAS_VIZINHOS
+// usa de rules.js: percentualDesconto, sugerirDestino
 
-export const MODOS = ['split', 'mercado', 'cliente'];
+const MODOS = ['split', 'mercado', 'cliente'];
 
-export const S = {};
+const S = {};
 
 let sequencia = 1;
-export const novoId = () => `id${sequencia++}`;
+const novoId = () => `id${sequencia++}`;
 
-export function modoDaUrl() {
+function modoDaUrl() {
   const hash = location.hash.slice(1);
   return MODOS.includes(hash) ? hash : null;
 }
@@ -19,7 +19,7 @@ function modoInicial() {
   return modoDaUrl() ?? (window.innerWidth < 560 ? 'cliente' : 'split');
 }
 
-export function criarItemDeEstoque(dados) {
+function criarItemDeEstoque(dados) {
   return { ...dados, id: novoId(), status: 'pendente', sugestao: sugerirDestino(dados) };
 }
 
@@ -36,7 +36,7 @@ function ofertaDeVizinho(dados) {
   };
 }
 
-export function reiniciarEstado() {
+function reiniciarEstado() {
   const modo = S.modo ?? modoInicial();
   sequencia = 1;
   for (const chave of Object.keys(S)) delete S[chave];

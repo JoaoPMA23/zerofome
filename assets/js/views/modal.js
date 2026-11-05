@@ -1,11 +1,11 @@
 // Modal "Ajustar oferta" do painel do mercado.
 
-import { COR_CATEGORIA, JANELAS_RETIRADA, ONG } from '../data.js';
-import { brl, prazo } from '../format.js';
-import { precoComDesconto } from '../rules.js';
-import { S } from '../state.js';
+// usa de data.js: COR_CATEGORIA, JANELAS_RETIRADA, ONG
+// usa de format.js: brl, prazo
+// usa de rules.js: precoComDesconto
+// usa de state.js: S
 
-export function renderModal(root) {
+function renderModal(root) {
   if (!S.modal) {
     root.innerHTML = '';
     return;
@@ -58,7 +58,7 @@ export function renderModal(root) {
  * Atualiza só os textos calculados, sem recriar o modal
  * (recriar quebraria o arraste dos sliders e fecharia o select).
  */
-export function atualizarResumo(root) {
+function atualizarResumo(root) {
   const m = S.modal;
   const item = S.itens.find((i) => i.id === m.itemId);
   const preco = precoComDesconto(item.preco, m.pct);

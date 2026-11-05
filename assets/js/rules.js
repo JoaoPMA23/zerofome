@@ -1,15 +1,15 @@
 // Regras de negócio: sugestão de destino para cada item e indicadores do painel.
 
-export const precoComDesconto = (preco, pct) => Math.round(preco * (1 - pct / 100) * 100) / 100;
+const precoComDesconto = (preco, pct) => Math.round(preco * (1 - pct / 100) * 100) / 100;
 
-export const percentualDesconto = (preco, original) => Math.round((1 - preco / original) * 100);
+const percentualDesconto = (preco, original) => Math.round((1 - preco / original) * 100);
 
 /**
  * Previsão simples de sobra: o que não sai pelo giro médio até o vencimento.
  * - vence hoje: sugere doação (não há tempo para vender);
  * - senão: desconto maior quanto mais perto do vencimento, +5 pontos se a sobra prevista for alta.
  */
-export function sugerirDestino(item) {
+function sugerirDestino(item) {
   const diasUteis = Math.max(item.dias, 0);
   const sobra = Math.max(0, Math.round(item.qtd - item.giro * diasUteis));
 
@@ -33,7 +33,7 @@ export function sugerirDestino(item) {
   };
 }
 
-export function calcularIndicadores(estado) {
+function calcularIndicadores(estado) {
   const pendentes = estado.itens.filter((i) => i.status === 'pendente');
   const reservasDoMercado = estado.reservas.filter((r) => r.doMercado);
   const kgVendido = estado.reservas.reduce((soma, r) => soma + r.kg, 0);

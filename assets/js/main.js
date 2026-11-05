@@ -1,11 +1,11 @@
 // Ponto de entrada: monta a tela, liga os eventos e redesenha após cada ação.
 
-import { acoes, atualizarCampoDoModal, fecharCamadaDoTopo } from './actions.js';
-import { S, modoDaUrl, reiniciarEstado } from './state.js';
-import { renderCliente } from './views/client.js';
-import { renderFluxo } from './views/flow.js';
-import { renderMercado } from './views/market.js';
-import { atualizarResumo, renderModal } from './views/modal.js';
+// usa de actions.js: acoes, atualizarCampoDoModal, fecharCamadaDoTopo
+// usa de state.js: S, modoDaUrl, reiniciarEstado
+// usa de views/client.js: renderCliente
+// usa de views/flow.js: renderFluxo
+// usa de views/market.js: renderMercado
+// usa de views/modal.js: atualizarResumo, renderModal
 
 const $ = (id) => document.getElementById(id);
 

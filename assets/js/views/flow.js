@@ -1,9 +1,9 @@
 // Faixa com as 5 etapas do fluxo zeroFome e o último evento da demonstração.
 
-import { ETAPAS_FLUXO } from '../data.js';
-import { S } from '../state.js';
+// usa de data.js: ETAPAS_FLUXO
+// usa de state.js: S
 
-export function renderFluxo(elEtapas, elLog) {
+function renderFluxo(elEtapas, elLog) {
   elEtapas.innerHTML = ETAPAS_FLUXO.map(({ titulo, descricao }, i) => {
     const n = i + 1;
     const classe = n === S.etapa ? 'on' : n < S.etapa ? 'done' : '';

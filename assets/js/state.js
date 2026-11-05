@@ -3,7 +3,7 @@
 // usa de data.js: CONSERVACAO, ERP_LEITURA_INICIAL, OFERTAS_VIZINHOS
 // usa de rules.js: percentualDesconto, sugerirDestino
 
-const MODOS = ['split', 'mercado', 'cliente'];
+const MODOS = ['split', 'mercado', 'cliente', 'negocio'];
 
 const S = {};
 

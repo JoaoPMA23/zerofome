@@ -8,6 +8,7 @@
 // usa de ui.js: consumirAlvoPush, esconderPush, mostrarPush, toast
 // usa de views/client.js: maximoReservavel
 // usa de views/market.js: esquecerIndicadores
+// usa de business.js: aplicarCenario
 
 const buscar = (lista, id) => lista.find((x) => x.id === id);
 
@@ -88,6 +89,11 @@ const acoes = {
     esquecerIndicadores();
     esconderPush();
     toast('Demonstração reiniciada');
+  },
+
+  // simulador de negócio
+  aplicarCenario(el) {
+    aplicarCenario(el.dataset.k);
   },
 
   // painel do mercado

@@ -1,0 +1,83 @@
+/* Tela "Negócio": simulador de modelo de negócio e impacto. */
+
+.sim-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+.sim-head h2 { font-size: 22px; letter-spacing: -.02em; }
+.sim-head p { max-width: 640px; font-size: 13px; }
+.sim-cenarios { display: flex; align-items: center; gap: 4px; background: var(--muted); border: 1px solid var(--border); border-radius: 12px; padding: 3px 3px 3px 10px; }
+.sim-cenarios .r-meta { margin: 0 6px 0 0; font-weight: 600; }
+.sim-cenarios button { padding: 6px 12px; border-radius: 9px; font-weight: 600; font-size: 13px; color: var(--muted-fg); }
+.sim-cenarios button.on { background: var(--card); color: var(--fg); box-shadow: var(--shadow); }
+
+.sim-grid { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 20px; align-items: start; }
+
+/* premissas */
+.sim-inputs { padding: 6px 20px 14px; }
+.sim-group { border: 0; padding: 12px 0 4px; border-bottom: 1px solid var(--border); }
+.sim-group:last-child { border-bottom: 0; }
+.sim-group legend { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-fg); padding: 8px 0 4px; }
+.sim-field { display: block; margin: 10px 0 14px; }
+.sim-field input[type=range] { width: 100%; accent-color: var(--primary); }
+.sim-field small { display: block; font-size: 11.5px; color: var(--muted-fg); line-height: 1.35; }
+.sim-field .fl b { font-variant-numeric: tabular-nums; }
+
+/* resultados */
+.sim-out { display: grid; gap: 16px; }
+.sim-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.sim-tile { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 14px 16px; box-shadow: var(--shadow); }
+.sim-tile .l { font-size: 12px; font-weight: 600; color: var(--muted-fg); }
+.sim-tile .v { font-size: 24px; font-weight: 800; letter-spacing: -.02em; margin: 2px 0; color: var(--primary); }
+.sim-tile .s { font-size: 11.5px; color: var(--muted-fg); line-height: 1.35; }
+.sim-tile.neg .v { color: oklch(50% .19 27); }
+.sim-status { font-weight: 700; display: inline-block; margin-right: 4px; }
+.sim-status.good { color: var(--primary); }
+.sim-status.bad { color: oklch(50% .19 27); }
+
+.sim-card { padding: 18px 20px; }
+.sim-card h3 { font-size: 15px; letter-spacing: -.01em; }
+
+/* barra empilhada do destino da perda */
+.stack { display: flex; gap: 2px; height: 28px; margin: 14px 0 12px; }
+.seg-bar { display: block; height: 100%; min-width: 2px; transition: width .35s; cursor: default; }
+.seg-bar:first-child { border-radius: 6px 0 0 6px; }
+.seg-bar:last-child { border-radius: 0 6px 6px 0; }
+.seg-bar:only-child { border-radius: 6px; }
+.sim-legend { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 20px; }
+.sim-legend li { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.sim-legend .sw { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+.sim-legend .nm { flex: 1; color: var(--muted-fg); }
+.sim-legend .pc { color: var(--muted-fg); width: 36px; text-align: right; font-size: 12px; }
+.sim-tip { position: fixed; z-index: 70; pointer-events: none; background: var(--surface); color: oklch(96% .02 150); font-size: 12.5px; font-weight: 600; padding: 7px 10px; border-radius: 9px; box-shadow: var(--shadow-lift); opacity: 0; transition: opacity .12s; }
+.sim-tip.show { opacity: 1; }
+
+.sim-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.sim-list { margin: 12px 0 10px; }
+.sim-list div { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px dashed var(--border); font-size: 13px; }
+.sim-list dt { color: var(--muted-fg); }
+.sim-list dd { font-weight: 700; }
+.sim-list .total { border-bottom: 0; font-size: 15px; }
+.sim-list .total dt { color: var(--fg); font-weight: 700; }
+.sim-list .total dd { color: var(--primary); font-weight: 800; }
+.sim-ok, .sim-alert { font-size: 12.5px; padding: 9px 11px; border-radius: 11px; line-height: 1.4; }
+.sim-ok { background: var(--secondary); color: var(--secondary-fg); }
+.sim-alert { background: var(--danger-soft); color: oklch(45% .17 27); }
+.sim-big { font-size: 30px; font-weight: 800; letter-spacing: -.02em; color: var(--primary); margin: 8px 0; }
+.sim-progress { height: 8px; border-radius: 9px; background: var(--muted); overflow: hidden; margin-bottom: 10px; }
+.sim-progress i { display: block; height: 100%; background: var(--primary); border-radius: 9px; transition: width .35s; }
+
+.sim-year-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+.sim-year-grid div { display: flex; flex-direction: column; }
+.sim-year-grid b { font-size: 20px; font-weight: 800; letter-spacing: -.02em; }
+.sim-year-grid span { font-size: 12px; color: var(--muted-fg); }
+
+.sim-nota { font-size: 12px; color: var(--muted-fg); margin-top: 16px; max-width: 900px; }
+
+@media (max-width: 1180px) {
+  .sim-tiles, .sim-year-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 980px) {
+  .sim-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .sim-pair, .sim-legend { grid-template-columns: 1fr; }
+  .sim-tile .v { font-size: 20px; }
+}

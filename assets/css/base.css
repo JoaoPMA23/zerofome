@@ -72,8 +72,14 @@ input, select { font: inherit; color: inherit; }
 .stage.split { grid-template-columns: minmax(0, 1fr) 400px; }
 .stage.mercado { grid-template-columns: minmax(0, 1fr); }
 .stage.cliente { grid-template-columns: 1fr; justify-items: center; }
+.stage.negocio { grid-template-columns: minmax(0, 1fr); }
 .stage.mercado .col-client,
-.stage.cliente .col-market { display: none; }
+.stage.cliente .col-market,
+.stage.negocio .col-market,
+.stage.negocio .col-client { display: none; }
+.col-sim { display: none; }
+.stage.negocio .col-sim { display: block; }
+body.m-negocio .flow { display: none; }
 .col-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-fg); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
 .col-label .dot { width: 8px; height: 8px; border-radius: 9px; }
 .col-label .dot.market { background: var(--primary); }

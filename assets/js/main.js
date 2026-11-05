@@ -6,6 +6,8 @@
 // usa de views/flow.js: renderFluxo
 // usa de views/market.js: renderMercado
 // usa de views/modal.js: atualizarResumo, renderModal
+// usa de business.js: alterarPremissa
+// usa de views/simulator.js: renderSimulador, atualizarResultadosSimulador, ligarDicasDoGrafico
 
 const $ = (id) => document.getElementById(id);
 
@@ -17,6 +19,7 @@ const dom = {
   mercado: $('market'),
   modal: $('modalroot'),
   cliente: { app: $('app'), tabbar: $('tabbar'), sheet: $('sheet'), sheetFundo: $('sheetbg') },
+  simulador: $('simulator'),
 };
 
 function render() {
@@ -28,6 +31,7 @@ function render() {
   renderMercado(dom.mercado);
   renderCliente(dom.cliente);
   renderModal(dom.modal);
+  if (S.modo === 'negocio') renderSimulador(dom.simulador);
 
   // destaques (piscar/animar) valem só para este render
   S.destaque.clear();
@@ -49,6 +53,15 @@ function aoEditarModal(ev) {
 }
 document.addEventListener('input', aoEditarModal);
 document.addEventListener('change', aoEditarModal);
+
+document.addEventListener('input', (ev) => {
+  const chave = ev.target.dataset?.sim;
+  if (!chave) return;
+  alterarPremissa(chave, ev.target.value);
+  atualizarResultadosSimulador(dom.simulador);
+});
+
+ligarDicasDoGrafico(dom.simulador);
 
 document.addEventListener('keydown', (ev) => {
   if (ev.key === 'Escape' && fecharCamadaDoTopo() !== false) render();

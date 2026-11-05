@@ -4,7 +4,13 @@ const brl = (valor) => valor.toLocaleString('pt-BR', { style: 'currency', curren
 
 const num = (valor, casas = 1) => valor.toLocaleString('pt-BR', { maximumFractionDigits: casas });
 
-const plural = (n, singular, pluralForma) => (n === 1 ? singular : pluralForma);
+const brlInteiro = (valor) =>
+  valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+
+/** Peso legível: até 1 t em kg, acima disso em toneladas. */
+const peso = (kg) => (kg >= 1000 ? `${num(kg / 1000)} t` : `${num(kg, 0)} kg`);
+
+const plural =(n, singular, pluralForma) => (n === 1 ? singular : pluralForma);
 
 function prazo(dias) {
   if (dias <= 0) return 'Vence hoje';
